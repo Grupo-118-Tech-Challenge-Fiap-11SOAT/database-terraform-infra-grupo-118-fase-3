@@ -4,7 +4,7 @@ terraform {
     organization = "Grupo-118-Tech-Challenge-Fiap-11SOAT"
 
     workspaces {
-      name = "k8s-terraform-infra-grupo-118-fase-3"
+      name = "database-terraform-infra-grupo-118-fase-3"
     }
   }
 }

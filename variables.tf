@@ -7,7 +7,13 @@ variable "resource_group_name" {
 variable "resource_group_location" {
   description = "The Azure region where resources will be created"
   type        = string
-  default     = "East US"
+  default     = "eastus2"
+}
+
+variable "server_name" {
+  type        = string
+  description = "SQL Server Name"
+  default     = "sqlserver-grupo-118-fase-3"
 }
 
 variable "admin_login" {
@@ -19,6 +25,18 @@ variable "admin_password" {
   type        = string
   description = "SQL Server admin password"
   sensitive   = true
+}
+
+variable "database_name" {
+  type        = string
+  description = "DataBase Name"
+  default     = "sqldb-grupo-118-fase-3"
+}
+
+variable "sku_name" {
+  type        = string
+  description = "Sku Name"
+  default     = "S0"
 }
 
 variable "client_ip" {
