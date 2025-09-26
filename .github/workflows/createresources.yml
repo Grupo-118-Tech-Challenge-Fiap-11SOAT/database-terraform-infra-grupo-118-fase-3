@@ -45,6 +45,7 @@ on:
     branches:
       - main
       - develop
+      - banco-de-dados
 
 jobs:
 
