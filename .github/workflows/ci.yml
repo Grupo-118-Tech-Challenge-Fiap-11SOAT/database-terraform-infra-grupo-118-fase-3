@@ -10,7 +10,7 @@ jobs:
   terraform-ci:
     runs-on: ubuntu-latest
     env:
-      TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+      TF_TOKEN_app_terraform_io: ${{ secrets.TFE_TOKEN }}
 
     steps:
       - name: Checkout repo
