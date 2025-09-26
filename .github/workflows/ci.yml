@@ -9,6 +9,8 @@ on:
 jobs:
   terraform-ci:
     runs-on: ubuntu-latest
+    env:
+      TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
 
     steps:
       - name: Checkout repo
