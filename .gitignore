@@ -1,27 +1,29 @@
-# Terraform state files
+# .terraform (provider binaries, external module source code, …)
+**/.terraform/*
+# state files
 *.tfstate
 *.tfstate.*
 
-# Local .terraform directories
-.terraform/
+# Crash log files (if you run Terraform locally)
+crash.log
+crash.*.log
 
-# Variable files (potentially containing sensitive data)
+# Variable files
 *.tfvars
 *.tfvars.json
 
-# Override files (unless explicitly intended for version control)
+# Override files (HCL or JSON, depending on your configuration)
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
 
-# CLI configuration files
+# Terraform CLI configuration files
 .terraformrc
 terraform.rc
 
-# Crash log files
-crash.log
-crash.*.log
+# IDE Related
+.idea
 
-# Terraform plan output files (if saving plan output locally)
-*.tfplan
+# Lock file
+.terraform.lock.hcl
