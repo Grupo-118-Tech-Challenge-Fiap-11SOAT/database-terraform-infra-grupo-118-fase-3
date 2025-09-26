@@ -22,8 +22,8 @@ module "sql_server" {
   name = var.server_name
   resource_group_name = module.infra_database_resource_group.name
   location = module.infra_database_resource_group.location
-  admin_login  = ""
-  admin_password = ""
+  admin_login    = var.admin_login
+  admin_password = var.admin_password
 }
 
 output "sql_server_id" {
@@ -45,6 +45,6 @@ module "database" {
 module "azure_sql_firewall" {
   source = "./modules/azure-sql-firewall"
   sql_server_id = module.sql_server.id
-  client_ip = "177.189.167.171"
+  client_ip = "0.0.0.0"
 }
 #endregion

@@ -17,14 +17,13 @@ variable "server_name" {
 }
 
 variable "admin_login" {
-  type        = string
-  description = "SQL Server admin login"
+  type      = string
+  sensitive = true
 }
 
 variable "admin_password" {
-  type        = string
-  description = "SQL Server admin password"
-  sensitive   = true
+  type      = string
+  sensitive = true
 }
 
 variable "database_name" {
