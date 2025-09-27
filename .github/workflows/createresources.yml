@@ -12,7 +12,7 @@ on:
 
 jobs:
   deploy:
-    uses: Grupo-118-Tech-Challenge-Fiap-11SOAT/terraform-template-pipeline-grupo118-fase-3/.github/workflows/terraform-template-creation-resource.yml@feature/receive-parameters-dinamically
+    uses: Grupo-118-Tech-Challenge-Fiap-11SOAT/terraform-template-pipeline-grupo118-fase-3/.github/workflows/terraform-template-creation-resource.yml@main
     with:
       terraform_var_mapping: |
         {
