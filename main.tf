@@ -45,6 +45,6 @@ module "database" {
 module "azure_sql_firewall" {
   source        = "./modules/azure-sql-firewall"
   sql_server_id = module.sql_server.id
-  client_ip     = "0.0.0.0"
+  client_ip     = var.client_ip
 }
 #endregion
