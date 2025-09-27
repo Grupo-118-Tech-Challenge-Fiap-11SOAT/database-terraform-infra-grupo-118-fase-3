@@ -48,35 +48,13 @@ on:
       - banco-de-dados
 
 jobs:
-
-  prepare:
-    runs-on: ubuntu-latest
-    outputs:
-      terraform_vars: ${{ steps.build-vars.outputs.terraform_vars }}
-    steps:
-      - name: Build Terraform Variables
-        id: build-vars
-        run: |
-          TERRAFORM_VARS=$(cat << EOF
-          {
-              "admin_login": "${{ secrets.TF_SQL_ADMIN_LOGIN }}",
-              "admin_password": "${{ secrets.TF_SQL_ADMIN_PASSWORD }}",
-              "client_ip": "${{ secrets.TF_SQL_CLIENT_IP }}",
-          }
-          EOF
-          )
-          echo "terraform_vars<<EOF" >> $GITHUB_OUTPUT
-          echo "$TERRAFORM_VARS" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-
   deploy:
-    needs: prepare
     uses: Grupo-118-Tech-Challenge-Fiap-11SOAT/terraform-template-pipeline-grupo118-fase-3/.github/workflows/terraform-template-creation-resource.yml@feature/receive-parameters-dinamically
     with:
-      terraform_vars: ${{ needs.prepare.outputs.terraform_vars }}
-    secrets:
-      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+      terraform_var_mapping: |
+        {
+          "admin_login": "TF_SQL_ADMIN_LOGIN",
+          "admin_password": "TF_SQL_ADMIN_PASSWORD",
+          "client_ip": "TF_SQL_CLIENT_IP"
+        }
+    secrets: inherit 
