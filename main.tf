@@ -18,12 +18,12 @@ output "infra_database_resource_group_location" {
 
 #region SQL Server
 module "sql_server" {
-  source   = "./modules/azure-server"
-  name = var.server_name
+  source              = "./modules/azure-server"
+  name                = var.server_name
   resource_group_name = module.infra_database_resource_group.name
-  location = module.infra_database_resource_group.location
-  admin_login    = var.admin_login
-  admin_password = var.admin_password
+  location            = module.infra_database_resource_group.location
+  admin_login         = var.admin_login
+  admin_password      = var.admin_password
 }
 
 output "sql_server_id" {
@@ -34,17 +34,17 @@ output "sql_server_id" {
 
 #region DataBase
 module "database" {
-  source = "./modules/azure-database"
-  name = var.database_name
+  source    = "./modules/azure-database"
+  name      = var.database_name
   server_id = module.sql_server.id
-  sku_name = var.sku_name
+  sku_name  = var.sku_name
 }
 #endregion
 
 # Firewall (libera acesso do seu IP)
 module "azure_sql_firewall" {
-  source = "./modules/azure-sql-firewall"
+  source        = "./modules/azure-sql-firewall"
   sql_server_id = module.sql_server.id
-  client_ip = "0.0.0.0"
+  client_ip     = var.client_ip
 }
 #endregion

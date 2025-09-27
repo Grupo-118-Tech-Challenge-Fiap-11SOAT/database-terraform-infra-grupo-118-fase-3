@@ -1,0 +1,22 @@
+name: Create Terraform Resources
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  deploy:
+    uses: Grupo-118-Tech-Challenge-Fiap-11SOAT/terraform-template-pipeline-grupo118-fase-3/.github/workflows/terraform-template-creation-resource.yml@main
+    with:
+      terraform_var_mapping: |
+        {
+          "admin_login": "TF_SQL_ADMIN_LOGIN",
+          "admin_password": "TF_SQL_ADMIN_PASSWORD",
+          "client_ip": "TF_SQL_CLIENT_IP"
+        }
+    secrets: inherit 
