@@ -32,7 +32,7 @@
 #       - name: Terraform Validate
 #         run: terraform validate
 
-#       - name: Terraform Plan
+#       - name: Terraform Plan.
 #         run: terraform plan -var "admin_login=${{ secrets.TF_SQL_ADMIN_LOGIN }}" -var "admin_password=${{ secrets.TF_SQL_ADMIN_PASSWORD}}" -var "client_ip=${{ secrets.TF_SQL_CLIENT_IP}}"
 
 name: Create Terraform Resources
