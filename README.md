@@ -1,5 +1,5 @@
 # Introduction
-Repository to create the SQL Server database.
+Repository to create the SQL Server database and SQL Server.
 
 # Create Service Principal
 ## Replace with your actual subscription ID
