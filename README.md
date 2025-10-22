@@ -1,5 +1,5 @@
 # Introduction
-Repository to create the SQL Server database and SQL Server for the Kubernetes API and Azure Function usage.
+Repository to create the databases.
 
 # Create Service Principal
 ## Replace with your actual subscription ID

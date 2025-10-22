@@ -18,7 +18,7 @@ output "infra_database_resource_group_location" {
 
 #region SQL Server
 module "sql_server" {
-  source              = "./modules/azure-server"
+  source              = "./modules/azure-sql-server"
   name                = var.server_name
   resource_group_name = module.infra_database_resource_group.name
   location            = module.infra_database_resource_group.location
@@ -34,7 +34,7 @@ output "sql_server_id" {
 
 #region DataBase
 module "database" {
-  source    = "./modules/azure-database"
+  source    = "./modules/azure-sql-database"
   name      = var.database_name
   server_id = module.sql_server.id
   sku_name  = var.sku_name
