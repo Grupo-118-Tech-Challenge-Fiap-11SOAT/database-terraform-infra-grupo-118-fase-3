@@ -17,4 +17,6 @@ resource "azurerm_cosmosdb_account" "cosmosdb_account" {
     location          = var.location
     failover_priority = 0
   }
+
+  free_tier_enabled = true
 }
