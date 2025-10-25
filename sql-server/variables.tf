@@ -1,7 +1,7 @@
 variable "resource_group_name" {
   description = "The name of the resource group where resources will be created"
   type        = string
-  default     = "terraform-database-infra-grupo-118-fase-3"
+  default     = "terraform-sqlserver-database-infra-grupo-118-fase-4"
 }
 
 variable "resource_group_location" {
@@ -13,7 +13,7 @@ variable "resource_group_location" {
 variable "server_name" {
   type        = string
   description = "SQL Server Name"
-  default     = "sqlserver-grupo-118-fase-3"
+  default     = "sqlserver-grupo-118-fase-4"
 }
 
 variable "admin_login" {
@@ -29,7 +29,7 @@ variable "admin_password" {
 variable "database_name" {
   type        = string
   description = "DataBase Name"
-  default     = "sqldb-grupo-118-fase-3"
+  default     = "sqldb-grupo-118-fase-4"
 }
 
 variable "sku_name" {
