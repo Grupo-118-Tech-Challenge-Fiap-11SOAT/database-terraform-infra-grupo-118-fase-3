@@ -70,3 +70,8 @@ terraform {
   }
 }
 ```
+
+# Execução do Banco de dados de Produtos (MongoDb Atlas)
+- Crie/acesse sua conta no Atlas
+- Copie a OrganizationId e cole no defaul da var atlas_org_id
+- Obtenha a PublicKey e PrivateKey e inclua no arquivo provider.tf
