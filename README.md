@@ -1,5 +1,5 @@
 # Introduction
-Repository to create the SQL Server database and SQL Server for the Kubernetes API and Azure Function usage.
+Repository to create the databases.
 
 # Create Service Principal
 ## Replace with your actual subscription ID
@@ -70,3 +70,9 @@ terraform {
   }
 }
 ```
+
+# Execução do Banco de dados de Produtos (MongoDb Atlas)
+- Crie/acesse sua conta no Atlas
+- Copie a OrganizationId e cole no defaul da var atlas_org_id
+- Obtenha a PublicKey e PrivateKey e guarde em um loca seguro
+- Ao dar o comando terraform apply forneça PublicKey e PrivateKey quando solicitado

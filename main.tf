@@ -18,7 +18,7 @@ output "infra_database_resource_group_location" {
 
 #region SQL Server
 module "sql_server" {
-  source              = "./modules/azure-server"
+  source              = "./modules/azure-sql-server"
   name                = var.server_name
   resource_group_name = module.infra_database_resource_group.name
   location            = module.infra_database_resource_group.location
@@ -34,17 +34,34 @@ output "sql_server_id" {
 
 #region DataBase
 module "database" {
-  source    = "./modules/azure-database"
+  source    = "./modules/azure-sql-database"
   name      = var.database_name
   server_id = module.sql_server.id
   sku_name  = var.sku_name
 }
 #endregion
 
-# Firewall (libera acesso do seu IP)
+#region Firewall (libera acesso do seu IP)
 module "azure_sql_firewall" {
   source        = "./modules/azure-sql-firewall"
   sql_server_id = module.sql_server.id
   client_ip     = var.client_ip
+}
+#endregion
+
+####MongoDb######
+module "mongodb_atlas" {
+  source = "./modules/mongodb-atlas"
+
+  atlas_org_id       = var.atlas_org_id
+  atlas_project_name = "products"
+  cluster_name       = "products-cluster"
+}
+
+module "mongodb_user_pass" {
+  source = "./modules/mongodb-user-pass"
+
+  project_id         = module.mongodb_atlas.project_id
+  atlas_project_name = "products"
 }
 #endregion
