@@ -50,57 +50,18 @@ module "azure_sql_firewall" {
 #endregion
 
 ####MongoDb######
+module "mongodb_atlas" {
+  source = "./modules/mongodb-atlas"
 
-resource "mongodbatlas_project" "project" {
-  org_id = var.atlas_org_id
-  name   = var.atlas_project_name
+  atlas_org_id       = var.atlas_org_id
+  atlas_project_name = "products"
+  cluster_name       = "products-cluster"
 }
 
-## Create an Atlas cluster in Azure ##
-resource "mongodbatlas_cluster" "cluster" {
-  project_id = mongodbatlas_project.project.id
-  name       = "products-cluster"
+module "mongodb_user_pass" {
+  source = "./modules/mongodb-user-pass"
 
-  cluster_type = "REPLICASET"
-
-  # Free Tier (sempre AWS)
-  provider_name                 = "TENANT"
-  backing_provider_name         = "AWS"
-  provider_region_name          = "US_EAST_1"
-  provider_instance_size_name  = "M0"
-
-  mongo_db_major_version = "7.0"
+  project_id         = module.mongodb_atlas.project_id
+  atlas_project_name = "products"
 }
-
-## Whitelist my current IP address ##
-resource "mongodbatlas_project_ip_access_list" "allow_all" {
-  project_id = mongodbatlas_project.project.id
-  cidr_block = "0.0.0.0/0"
-  comment    = "TEMP - DEBUG ONLY"
-}
-
-# Create a Database Password
-resource "random_password" "db-user-password" {
-  length = 16
-  special = true
-  override_special = "_%@"
-}
-
-# Create a Database User
-resource "mongodbatlas_database_user" "db-user" {
-  username           = "adm"
-  password           = random_password.db-user-password.result
-  project_id         = mongodbatlas_project.project.id
-  auth_database_name = "admin"
-  
-  roles {
-    role_name     = "readWrite"
-    database_name = "${var.atlas_project_name}-db"
-  }
-
-  lifecycle {
-    ignore_changes = [
-      password,
-    ]
-  }
-}
+#endregion

@@ -1,6 +1,6 @@
 provider "azurerm" {
   features {}
-  subscription_id = ""
+  subscription_id = "26ebe20a-5c44-4406-b668-af97b16e8469"
 }
 
 
@@ -11,7 +11,7 @@ terraform {
       version = "=4.41.0"
     }
 
-     mongodbatlas = {
+    mongodbatlas = {
       source  = "mongodb/mongodbatlas"
       version = "~> 1.17"
     }
@@ -19,7 +19,7 @@ terraform {
 }
 
 provider "mongodbatlas" {
-  public_key  = ""
-  private_key = ""
+  public_key  = var.mongodb_atlas_public_key
+  private_key = var.mongodb_atlas_private_key
 }
 
