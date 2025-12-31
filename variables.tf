@@ -47,7 +47,7 @@ variable "client_ip" {
 variable "atlas_org_id" {
   type        = string
   description = "Atlas organization id"
-  default     = "694992ec36b62f3e91b720ac"
+  default     = ""
 }
 
 variable "mongodb_atlas_public_key" {
