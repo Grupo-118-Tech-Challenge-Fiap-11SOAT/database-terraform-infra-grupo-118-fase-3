@@ -34,7 +34,7 @@ variable "database_name" {
 
 variable "user_database_name" {
   type        = string
-  description = "Nome do banco de dados de usuários"
+  description = "Nome do banco de dados de usuarios"
   default     = "sqldb-grupo-118-fase-4-users"
 }
 
