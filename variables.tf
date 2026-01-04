@@ -38,6 +38,12 @@ variable "user_database_name" {
   default     = "sqldb-grupo-118-fase-4-users"
 }
 
+variable "payment_database_name" {
+  type        = string
+  description = "Nome do banco de dados de pagamentos"
+  default     = "sqldb-grupo-118-fase-4-payments"
+}
+
 variable "sku_name" {
   type        = string
   description = "Sku Name"

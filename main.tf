@@ -50,6 +50,15 @@ module "user_database" {
 }
 #endregion
 
+#region Payment Database
+module "payment_database" {
+  source    = "./modules/azure-database"
+  name      = var.payment_database_name
+  server_id = module.sql_server.id
+  sku_name  = var.sku_name
+}
+#endregion
+
 # Firewall (libera acesso do seu IP)
 module "azure_sql_firewall" {
   source        = "./modules/azure-sql-firewall"
