@@ -1,14 +1,7 @@
-resource "azurerm_resource_group" "postgres_db" {
-  name           = var.name
-  server_id      = var.server_id
-  sku_name       = var.sku_name
-  charset        = "UTF8"
-}
-
 resource "azurerm_postgresql_server" "postgres_db" {
   name                = "p${var.postgres_project_name}db"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  location            = var.location
+  resource_group_name = var.resource_group_name
 
   administrator_login          = "psqladmin"
   administrator_login_password = "H@Sh1CoR3!"

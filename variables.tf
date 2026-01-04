@@ -42,3 +42,9 @@ variable "client_ip" {
   type        = string
   description = "Client IP para liberar no firewall"
 }
+
+variable "postgresql_database_name" {
+  description = "PostgreSQL Database Name"
+  type        = string
+  default     = "pgdb-grupo-118-fase-4"
+}

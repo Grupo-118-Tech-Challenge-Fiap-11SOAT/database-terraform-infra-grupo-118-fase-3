@@ -48,3 +48,14 @@ module "azure_sql_firewall" {
   client_ip     = var.client_ip
 }
 #endregion
+
+# PostgreSQL
+module "postgresql_database" {
+  source                = "./modules/azure-database-postgres"
+  name                  = var.postgresql_database_name
+  postgres_project_name = var.postgresql_database_name
+  server_id             = module.sql_server.id
+  sku_name              = var.sku_name
+  resource_group_name   = module.infra_database_resource_group.name
+  location              = module.infra_database_resource_group.location
+}
