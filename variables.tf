@@ -32,6 +32,12 @@ variable "database_name" {
   default     = "sqldb-grupo-118-fase-3"
 }
 
+variable "user_database_name" {
+  type        = string
+  description = "Nome do banco de dados de usuarios"
+  default     = "sqldb-grupo-118-fase-4-users"
+}
+
 variable "sku_name" {
   type        = string
   description = "Sku Name"
