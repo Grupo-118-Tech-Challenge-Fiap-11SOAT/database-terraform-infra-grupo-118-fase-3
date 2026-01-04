@@ -50,8 +50,16 @@ module "user_database" {
 }
 #endregion
 
-#region Orders Database
+#region Payment Database
+module "payment_database" {
+  source    = "./modules/azure-database"
+  name      = var.payment_database_name
+  server_id = module.sql_server.id
+  sku_name  = var.sku_name
+}
+#endregion
 
+#region Orders Database
 module "orders_database" {
   source    = "./modules/azure-database"
   name      = var.orders_database_name
