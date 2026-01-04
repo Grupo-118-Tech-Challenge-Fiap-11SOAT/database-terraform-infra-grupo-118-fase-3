@@ -8,9 +8,9 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "=4.41.0"
     }
-    postgresql = {
-      source  = "cyrilgdn/postgresql"
-      version = "1.26.0"
-    }
+    # postgresql = {
+    #   source  = "cyrilgdn/postgresql"
+    #   version = "1.26.0"
+    # }
   }
 }
