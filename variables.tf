@@ -26,12 +26,6 @@ variable "admin_password" {
   sensitive = true
 }
 
-variable "database_name" {
-  type        = string
-  description = "DataBase Name"
-  default     = "sqldb-grupo-118-fase-3"
-}
-
 variable "user_database_name" {
   type        = string
   description = "Nome do banco de dados de usuarios"
