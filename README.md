@@ -70,3 +70,12 @@ terraform {
   }
 }
 ```
+# Execução do Banco de dados de Produtos (MongoDb Atlas)
+- Crie/acesse sua conta no Atlas
+- Copie a OrganizationId e cole no defaul da var atlas_org_id
+- Obtenha a PublicKey e PrivateKey e guarde em um local seguro
+- Ao dar o comando terraform apply forneça PublicKey e PrivateKey quando solicitado
+- Para obter a senha gerada para o banco de dados criado execute o comando:
+```bash
+terraform output db_user_password
+```
