@@ -1,12 +1,6 @@
-resource "random_password" "db_user_password" {
-  length  = 16
-  special = true
-  override_special = "_%@"
-}
-
 resource "mongodbatlas_database_user" "db_user" {
-  username           = "adm"
-  password           = random_password.db_user_password.result
+  username           = var.admin_login
+  password           = var.admin_password
   project_id         = var.project_id
   auth_database_name = "admin"
 
