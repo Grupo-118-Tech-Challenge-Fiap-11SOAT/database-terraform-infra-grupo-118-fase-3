@@ -32,15 +32,6 @@ output "sql_server_id" {
 }
 #endregion
 
-#region DataBase
-module "database" {
-  source    = "./modules/azure-database"
-  name      = var.database_name
-  server_id = module.sql_server.id
-  sku_name  = var.sku_name
-}
-#endregion
-
 #region User Database
 module "user_database" {
   source    = "./modules/azure-database"
