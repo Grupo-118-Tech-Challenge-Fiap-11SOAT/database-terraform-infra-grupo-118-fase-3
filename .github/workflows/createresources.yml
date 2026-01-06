@@ -17,6 +17,9 @@ jobs:
         {
           "admin_login": "TF_SQL_ADMIN_LOGIN",
           "admin_password": "TF_SQL_ADMIN_PASSWORD",
-          "client_ip": "TF_SQL_CLIENT_IP"
+          "client_ip": "TF_SQL_CLIENT_IP",
+          "atlas_org_id":"TF_MONGODB_ATLAS_ORG_ID",
+          "mongodb_atlas_public_key":"TF_MONGODB_ATLAS_PUBLIC_KEY",
+          "mongodb_atlas_private_key":"TF_MONGODB_ATLAS_PRIVATE_KEY"
         }
     secrets: inherit 

@@ -59,6 +59,27 @@ module "orders_database" {
 }
 #endregion
 
+#region MongoDb for Products Database
+module "mongodb_atlas" {
+  source = "./modules/mongodb-atlas"
+
+  atlas_org_id       = var.atlas_org_id
+  atlas_project_name = "products"
+  cluster_name       = "products-cluster"
+}
+#endregion
+
+module "mongodb_user_pass" {
+  source = "./modules/mongodb-user-pass"
+
+  project_id         = module.mongodb_atlas.project_id
+  atlas_project_name = "products"
+  admin_login        = var.admin_login
+  admin_password     = var.admin_password
+
+}
+#endregion
+
 # Firewall (libera acesso do seu IP)
 module "azure_sql_firewall" {
   source        = "./modules/azure-sql-firewall"
