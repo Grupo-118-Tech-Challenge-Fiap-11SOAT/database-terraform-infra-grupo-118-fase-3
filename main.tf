@@ -74,8 +74,8 @@ module "mongodb_user_pass" {
 
   project_id         = module.mongodb_atlas.project_id
   atlas_project_name = "products"
-  admin_login         = var.admin_login
-  admin_password      = var.admin_password
+  admin_login        = var.admin_login
+  admin_password     = var.admin_password
 
 }
 #endregion
