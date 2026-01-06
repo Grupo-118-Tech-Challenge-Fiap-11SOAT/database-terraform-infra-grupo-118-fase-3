@@ -32,12 +32,51 @@ output "sql_server_id" {
 }
 #endregion
 
-#region DataBase
-module "database" {
+#region User Database
+module "user_database" {
   source    = "./modules/azure-database"
-  name      = var.database_name
+  name      = var.user_database_name
   server_id = module.sql_server.id
   sku_name  = var.sku_name
+}
+#endregion
+
+#region Payment Database
+module "payment_database" {
+  source    = "./modules/azure-database"
+  name      = var.payment_database_name
+  server_id = module.sql_server.id
+  sku_name  = var.sku_name
+}
+#endregion
+
+#region Orders Database
+module "orders_database" {
+  source    = "./modules/azure-database"
+  name      = var.orders_database_name
+  server_id = module.sql_server.id
+  sku_name  = var.sku_name
+}
+#endregion
+
+#region MongoDb for Products Database
+module "mongodb_atlas" {
+  source = "./modules/mongodb-atlas"
+
+  atlas_org_id       = var.atlas_org_id
+  atlas_project_name = "products"
+  cluster_name       = "products-cluster"
+}
+#endregion
+
+module "mongodb_user_pass" {
+  source = "./modules/mongodb-user-pass"
+
+  project_id         = module.mongodb_atlas.project_id
+  atlas_project_name = "products"
+  admin_login        = var.admin_login
+  admin_password     = var.admin_password
+
 }
 #endregion
 

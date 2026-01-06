@@ -26,10 +26,22 @@ variable "admin_password" {
   sensitive = true
 }
 
-variable "database_name" {
+variable "user_database_name" {
   type        = string
-  description = "DataBase Name"
-  default     = "sqldb-grupo-118-fase-3"
+  description = "Nome do banco de dados de usuarios"
+  default     = "sqldb-grupo-118-fase-4-users"
+}
+
+variable "payment_database_name" {
+  type        = string
+  description = "Nome do banco de dados de pagamentos"
+  default     = "sqldb-grupo-118-fase-4-payments"
+}
+
+variable "orders_database_name" {
+  type        = string
+  description = "Nome do banco de dados de pedidos"
+  default     = "sqldb-grupo-118-fase-4-orders"
 }
 
 variable "sku_name" {
@@ -41,4 +53,21 @@ variable "sku_name" {
 variable "client_ip" {
   type        = string
   description = "Client IP para liberar no firewall"
+}
+
+## Atlas Organization ID ##
+variable "atlas_org_id" {
+  type        = string
+  description = "Atlas organization id"
+  default     = ""
+}
+
+variable "mongodb_atlas_public_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "mongodb_atlas_private_key" {
+  type      = string
+  sensitive = true
 }
